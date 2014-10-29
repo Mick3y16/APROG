@@ -6,7 +6,7 @@
 package pl5;
 
 import java.text.DecimalFormat;
-import javax.swing.*;
+import java.util.Scanner;
 
 /**
  *
@@ -15,52 +15,64 @@ import javax.swing.*;
 public class ex6 {
     
     public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
         DecimalFormat df = new DecimalFormat("#.##");
+        String solido;
         
-        String[] solidos = { "Cilindro", "Cone", "Esfera"};
-        Object solido = JOptionPane.showInputDialog(null,"Pretende calcular o volume de que sólido?", null,JOptionPane.INFORMATION_MESSAGE, null, solidos, solidos[0]);
-
-        if(solido.equals("Esfera")) {
-            JTextField strraio = new JTextField(13);
-
-            JPanel myPanel = new JPanel();
-            myPanel.add(new JLabel("Raio:"));   
-            myPanel.add(strraio);
-
-            JOptionPane.showConfirmDialog(null, myPanel, "Insira os valores em metros", JOptionPane.OK_CANCEL_OPTION);
-
-            double raio = Double.parseDouble(strraio.getText());
-
-            // Volume da esfera
-            double volume = (4.0/3)*Math.PI*Math.pow(raio, 3);
-
-            JOptionPane.showMessageDialog(null, "O volume da esfera é de "+df.format(volume)+" metros cúbicos.");
-        } else {
-            JTextField strraio = new JTextField(5);
-            JTextField stralt = new JTextField(5);
-
-            JPanel myPanel = new JPanel();
-            myPanel.add(new JLabel("Raio:"));   
-            myPanel.add(strraio);
-            myPanel.add(new JLabel("Altura:"));
-            myPanel.add(stralt);
-
-            JOptionPane.showConfirmDialog(null, myPanel, "Insira os valores em metros", JOptionPane.OK_CANCEL_OPTION);
-
-            double raio = Double.parseDouble(strraio.getText());
-            double alt = Double.parseDouble(stralt.getText());
-
-            if(solido.equals("Cilindro")) {
-                // Volume do Cilindro
-                double volume = Math.PI*Math.pow(raio, 2)*alt;
-
-                JOptionPane.showMessageDialog(null, "O volume do cilindro é de "+df.format(volume)+" metros cúbicos.");
-            } else {
-                // Volume do Cone
-                double volume = (1.0/3)*Math.PI*Math.pow(raio, 2)*alt;
-
-                JOptionPane.showMessageDialog(null, "O volume do cone é de "+df.format(volume)+" metros cúbicos.");
+        do {
+            System.out.print("Prentende calcular o volume de que sólido? (Para Terminar digite fim.)\nCilindro | Cone | Esfera\n- ");
+            solido = scan.next();
+            solido = solido.toLowerCase();
+            
+            double volume = 0.0, alt, raio;
+            
+            switch(solido) {
+                case "cilindro":
+                    System.out.print("Qual o valor do raio? ");
+                    raio = scan.nextDouble();
+                    System.out.print("Qual o valor da altura? ");
+                    alt = scan.nextDouble();
+                    volume = vCilindro(raio, alt);
+                    break;
+                case "cone":
+                    System.out.print("Qual o valor do raio? ");
+                    raio = scan.nextDouble();
+                    System.out.print("Qual o valor da altura? ");
+                    alt = scan.nextDouble();
+                    volume = vCone(raio, alt);
+                    break;
+                case "esfera":
+                    System.out.print("Qual o valor do raio? ");
+                    raio = scan.nextDouble();
+                    volume = vEsfera(raio);
+                    break;
+                case "fim":
+                    break;
+                default:
+                    System.out.println("Não foi inserido um sólido válido.");
+                    break;
             }
-        }
+            if(volume != 0.0) {
+                System.out.println("O volume do(a) "+solido+" é "+df.format(volume)+".");
+            }
+        } while(!solido.equals("fim"));
+    }
+    
+    // Calcula o volume de um cilindro
+    public static double vCilindro(double raio, double alt) {
+        double vol = (1.0/3)*Math.PI*Math.pow(raio, 2)*alt;
+        return vol;
+    }
+    
+    // Calcula o volume de um cone
+    public static double vCone(double raio, double alt) {
+        double vol = Math.PI*Math.pow(raio, 2)*alt;
+        return vol;
+    }
+    
+    // Calcula o volume de uma esfera
+    public static double vEsfera(double raio) {
+        double vol = (4.0/3)*Math.PI*Math.pow(raio, 3);
+        return vol;
     }
 }
