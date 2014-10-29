@@ -11,7 +11,7 @@ package calculocombinatorio;
  */
 public class CalCombinatorio {
     /*
-     * 
+     *
      * Disponibiliza métodos associados ao Cálculo Combinatório
      */ 
    

@@ -15,7 +15,7 @@ public class ex5 {
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        int num1, num2, mdigc=0, ent=0;
+        int num1, num2, mdigc=0, mnum1=0, mnum2=0, ent=0;
 
         System.out.println("Quantos pares de números pretende inserir?");
         int n = scan.nextInt();
@@ -32,30 +32,32 @@ public class ex5 {
 
             if(digc > mdigc) {
                 mdigc = digc;
+                mnum1 = num1;
+                mnum2 = num2;
                 ent = i;
             }
         }
         if(ent != 0) {
-            System.out.println("O nº máximo de dígitos comuns encontrado num par de números foi "+mdigc+" na "+ent+"ª entrada.");
+            System.out.println("O primeiro par de números com mais digitos em comum é "+mnum1+" e "+mnum2+", respectivamente, tem "+mdigc+" digitos em comum e foi o "+ent+"º par a dar entrada.");
         } else {
             System.out.println("Não foi encontrado nenhum par de números com digitos comuns.");
         }
     }
 
     public static int digcomuns(int num1, int num2) {
-        int num=0, dnum1, dnum2;
+        int digc=0;
 
         while(num1 != 0 && num2 != 0) {
-            dnum1 = num1%10;
-            dnum2 = num2%10;
+            int dnum1 = num1%10;
+            int dnum2 = num2%10;
 
             if(dnum1 == dnum2) {
-                num++;
+                digc++;
             }
-            num1 /= 10;
-            num2 /= 10;
+            num1 /= 10; // num1 = num1 / 10;
+            num2 /= 10; // num2 = num2 / 10;
         }
-        return num;
+        return digc;
     }
 
     /*
