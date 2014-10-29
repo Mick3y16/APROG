@@ -17,24 +17,33 @@ public class ex1 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        // Inicialização do Scanner para ler os dados introduzidos pelo utilizador
         Scanner scan = new Scanner(System.in);
-
+        
+        // Pedido ao utilizador para digitar a sequência de palavras.
         System.out.println("Insira a sua sequência de palavras:");
-        String input = "";
 
-        int cont = 1;
+        // Declaração de um contador, para contar as palavras que são introduzidas, até encontrar um palíndromo.
+        int cont = 0;
+        // Declaração de uma variavel, como sendo falsa para entrar dentro do ciclo de modo a procurar palíndromos.
         boolean palindromo = false;
 
+        // Enquanto não for encontrado um Palindromo, o ciclo vai correr.
         while(palindromo == false) {
-            System.out.print("- ");
-            input = scan.next();
-
-            if(metodo1(input) == true) {
-                palindromo = true;
-            }
+            // Por cada vez que o ciclo corre é considerada uma tentativa.
             cont++;
+            System.out.print("- ");
+            // É lido o valor dado pelo utilizador.
+            String input = scan.next();
+
+            // Se o metodo1 retornar true, é porque encontrou um palindromo.
+            if(metodo1(input) == true) {
+                // Assim sendo podemos alterar o valor da variável palindromo e apresentar o resultado ao utilizador terminando o programa.
+                palindromo = true;
+                System.out.println("A palavra "+input+" é um palíndromo e foi encontra na "+cont+"ª tentativa.");
+            }
         }
-        System.out.println("A palavra "+input+" é um palíndromo e foi encontra depois de "+cont+" tentativas.");
+        
     }
 
     /*
