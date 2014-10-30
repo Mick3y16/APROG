@@ -6,6 +6,7 @@
 package pl5;
 
 import javax.swing.*;
+import calculocombinatorio.CalCombinatorio;
 
 /**
  *
@@ -33,9 +34,9 @@ public class ex4 {
                 do {
                     n = Integer.parseInt(JOptionPane.showInputDialog("Quantas possibilidades tem? (Insira um valor positivo)"));
                     p = Integer.parseInt(JOptionPane.showInputDialog("Quer organiza-las em que quantidade? (O valor deve ser menor ou igual às possibilidades)"));
-                } while(n < 1 || p < 1);
+                } while(n < 0 || p < 0);
                 
-                hipoteses = calculocombinatorio.CalCombinatorio.arranjos(n, p);
+                hipoteses = CalCombinatorio.arranjos(n, p);
                 if(hipoteses== -1) {
                     JOptionPane.showMessageDialog(null, "O valor de n nunca pode ser menor que p.");
                 } else {
@@ -46,9 +47,9 @@ public class ex4 {
                 do {
                     n = Integer.parseInt(JOptionPane.showInputDialog("Quantas possibilidades tem? (Insira um valor positivo)"));
                     p = Integer.parseInt(JOptionPane.showInputDialog("Quer organiza-las em que quantidade? (O valor deve ser menor ou igual às possibilidades)"));
-                } while(n < 1 || p < 1);
+                } while(n < 0 || p < 0  );
                 
-                hipoteses = calculocombinatorio.CalCombinatorio.combinacoes(n, p);
+                hipoteses = CalCombinatorio.combinacoes(n, p);
                 if(hipoteses== -1) {
                     JOptionPane.showMessageDialog(null, "O valor de n nunca pode ser menor que p.");
                 } else {
@@ -59,9 +60,9 @@ public class ex4 {
             case "permutações":
                 do {
                     n = Integer.parseInt(JOptionPane.showInputDialog("Quantas possibilidades tem? (Insira um valor positivo)"));
-                } while(n < 1);
+                } while(n < 0);
                 
-                hipoteses = calculocombinatorio.CalCombinatorio.permutacoes(n);
+                hipoteses = CalCombinatorio.permutacoes(n);
                 JOptionPane.showMessageDialog(null, "É possivel organizar as suas possibilidades de "+hipoteses+" maneiras.");
         
                 break;

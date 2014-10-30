@@ -29,7 +29,7 @@ public class ex1 {
         boolean palindromo = false;
 
         // Enquanto não for encontrado um Palindromo, o ciclo vai correr.
-        while(palindromo == false) {
+        do {
             // Por cada vez que o ciclo corre é considerada uma tentativa.
             cont++;
             System.out.print("- ");
@@ -41,8 +41,9 @@ public class ex1 {
                 // Assim sendo podemos alterar o valor da variável palindromo e apresentar o resultado ao utilizador terminando o programa.
                 palindromo = true;
                 System.out.println("A palavra "+input+" é um palíndromo e foi encontra na "+cont+"ª tentativa.");
-            }
-        }
+            } 
+        } while(palindromo == false);
+       
         
     }
 
