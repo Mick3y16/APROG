@@ -1,0 +1,3 @@
+J002;Pedro Saleiro
+J005;Gaspar Fernando
+Media das idades: 41 anos
